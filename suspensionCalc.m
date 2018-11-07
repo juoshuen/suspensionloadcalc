@@ -22,7 +22,9 @@ for i = vec1
     arm_mat = [arm_mat, arm] 
 end
 
+%cross the matricies 
 matrix = [cross(UnitVec_mat, arm_mat), M_contact]
+% solve for the first 2 forces. The solutions are stored in: sol(:,end)
 sol = rref(matrix)
 
 FUCA = FUCA_UnitVec_F';
@@ -32,7 +34,7 @@ ALCA = ALCA_UnitVec_F';
 PR = PR_UnitVec_F';
 TR = TR_UnitVec_F';
 
-matrix2 = [FUCA, AUCA, FLCA, ALCA, PR, TR, M_contact];
+matrix2 = [FUCA, AUCA, FLCA, ALCA, PR, TR, M_contact]; % M_contact is the moment at the contact point you want the force at the contact point - maggie 
 ans = rref(matrix2);
 
 end
