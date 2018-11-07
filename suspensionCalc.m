@@ -8,8 +8,8 @@ M_contact = cross(force, contact_point_F)'
 % Get rid of NaNs and data that is not points 
 points = [numF(1:3,:);numF(5:7,:);numF(9:10,:);numF(12:13,:);numF(15:16,:);numF(18:19,:)]
 % Create a matrix of all the unit vectors
-vec1 = [3,3,6,6,7,9] % These are the rows in 'points' where the locations for the rods connect with the wheel in order
-vec2 = [1,2,4,5,8,10] % These are the rows in 'points' where the locations for the rods connect with the chasis in order
+vec1 = [3,3,6,6,7,9] % These are the rows in 'points' where the locations for where the rods connect with the wheel are stored in order
+vec2 = [1,2,4,5,8,10] % These are the rows in 'points' where the locations for where the rods connect with the chasis are stored in order
 UnitVec_mat = []
 for i=1:6 
     unitvec = ((points(vec1(i),:) - points(vec2(i),:))/ norm(points(vec1(i),:) - points(vec2(i),:)))'
