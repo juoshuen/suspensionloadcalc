@@ -12,16 +12,10 @@ ALCA_UnitVec_F = (points(6,:) - points(5,:))/ norm(points(6,:) - points(5,:))% F
 PR_UnitVec_F = (points(7,:) - points(8,:))/ norm(points(7,:) - points(8,:))% Front Pull/Push Rod Unit Vector
 TR_UnitVec_F = (points(9,:) - points(10,:))/ norm(points(9,:) - points(10,:))% Front Track Rod Unit Vector
 
-
-
 FUCA = FUCA_UnitVec_F';
-AUCA = AUCA_UnitVec_F';
-FLCA = FLCA_UnitVec_F';
-ALCA = ALCA_UnitVec_F';
-PR = PR_UnitVec_F';
-TR = TR_UnitVec_F';
+AUCA = AUCA_UnitVec_F'
 
-matrix2 = [FUCA, AUCA, FLCA, ALCA, PR, TR, M_contact];
-ans = rref(matrix2);
+
+
 
 end
