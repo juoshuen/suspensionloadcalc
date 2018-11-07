@@ -12,7 +12,27 @@ ALCA_UnitVec_F = (points(6,:) - points(5,:))/ norm(points(6,:) - points(5,:))% F
 PR_UnitVec_F = (points(7,:) - points(8,:))/ norm(points(7,:) - points(8,:))% Front Pull/Push Rod Unit Vector
 TR_UnitVec_F = (points(9,:) - points(10,:))/ norm(points(9,:) - points(10,:))% Front Track Rod Unit Vector
 
+% Momenet of the wheel contact point 
+M_contact = cross(force, contact_point_F)'
 
+% Momement about the origin 
+arm1 = points(3,:) 
+col1 = cross(FUCA_UnitVec_F, arm1)' 
+arm2 = points(3,:)
+col2 = cross(AUCA_UnitVec_F, arm2)'
+arm3 = points(6,:)
+col3 = cross(FLCA_UnitVec_F, arm3)'
+arm4 = points(6,:)
+col4 = cross(ALCA_UnitVec_F, arm4)'
+arm5 = points(7,:)
+col5 = cross(PR_UnitVec_F, arm5)'
+arm6 = points(9,:)
+col6 = cross(TR_UnitVec_F, arm6)'
+matrix = [col1, col2, col3, col4, col5, col6, M_contact]
+sol = rref(matrix)
+FUCA_force_F = (1,end) * (FUCA_UnitVec_F)
+AUCA_force_F = (2,end) * (AUCA_UnitVec_F) 
+FLCA_force_F = (3,end) * (FLCA_UnitVec_F) 
 
 FUCA = FUCA_UnitVec_F';
 AUCA = AUCA_UnitVec_F';
